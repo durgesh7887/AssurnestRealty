@@ -2,7 +2,7 @@
 // ────────────────────────────────────────────────
 //          Database Configuration
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'property_sales_system');
+define('DB_NAME', 'property');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
@@ -34,5 +34,5 @@ try {
 }
 
 // Base URL for the application
-define('BASE_URL', 'http://localhost/real-estate-app1/');
+define('BASE_URL', 'http://localhost/AssurnestRealty/');
 ?>
