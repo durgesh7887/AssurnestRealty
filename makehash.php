@@ -16,8 +16,8 @@ echo "Your plain password was: " . htmlspecialchars($your_plain_password) . "\n\
 echo "Generated hash (copy this completely):\n";
 echo $hash . "\n\n";
 echo "Use it like this in SQL:\n";
-echo "INSERT INTO users (username, password, role, approved)\n";
-echo "VALUES ('admin', '$hash', 'admin', 1);\n";
+echo "INSERT INTO users (admin_id, admin_name,user, password)\n";
+echo "VALUES ('datalogger', 'datalogger', 'admin','$hash');\n";
 echo "</pre>";
 
 ?>
