@@ -351,11 +351,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
                         <select class="form-control" id="property_type" name="property_type" required>
                             <option value="" disabled selected>Select Property Type</option>
-                            <option value="Flat">Flat</option>
+                            <option value="Flats">Flats</option>
                             <option value="Lands and Plots">Lands and Plots</option>
-                            <option value="Row House">Row House</option>
-                            <option value="Villa">Villa</option>
-                            <option value="Bungalow">Bungalow</option>
+                            <option value="Row Houses">Row Houses</option>
+                            <option value="Villas">Villas</option>
+                            <option value="Bungalow">Bungalows</option>
                         </select>
                     </div>
 
