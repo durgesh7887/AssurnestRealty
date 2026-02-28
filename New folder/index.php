@@ -26,8 +26,8 @@
     <!-- favicon.ico in the root directory -->
     <link rel="apple-touch-icon" href="icon.png">
     <meta name="theme-color" content="#3454d1">
-    <link href="./css/styles.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/homepage_addtional.css"> -->
+    <link href="./css/styles.css?fd365619e86ad9137a29" rel="stylesheet">
+    <link rel="stylesheet" href="css/homepage_addtional.css">
 </head>
 
 
@@ -48,27 +48,27 @@
                 <div class="collapse navbar-collapse" id="main_nav99">
                     <ul class="navbar-nav mx-auto ">
                         <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Home </a>
+                            <a class="nav-link active" href="#h1"> Home </a>
                             <ul class="dropdown-menu dropdown-menu-left animate fade-up">
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Properties </a>
                             <ul class="dropdown-menu animate fade-up">
-                                <li><a class="dropdown-item " href="#">Luxury Flats</a>
+                                <li><a class="dropdown-item " href="#p3">Luxury Flats</a>
                                 </li>
-                                <li><a class="dropdown-item " href="#">Villa</a>
+                                <li><a class="dropdown-item " href="#p2">Villa</a>
                                 </li>
-                                <li><a class="dropdown-item " href="#"> Row Houses </a>
+                                <li><a class="dropdown-item " href="#p4"> Row Houses </a>
                                 </li>
-                                <li><a class="dropdown-item " href="#"> Lands and Plots </a>
+                                <li><a class="dropdown-item " href="#p1"> Lands and Plots </a>
                                 </li>
-                                <li><a class="dropdown-item " href="#">Bungloows</a>
+                                <li><a class="dropdown-item " href="#p5">Bungloows</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Blog </a>
+                            <a class="nav-link active " href="#r1" > reviews </a>
                             <ul class="dropdown-menu dropdown-menu-left animate fade-up">
                             </ul>
                         </li>
@@ -78,7 +78,7 @@
                     <ul class="navbar-nav ">
                         <li>
                             <a href="#" class="btn btn-primary text-capitalize">
-                                <i class="fa fa-sign-in mr-1"></i> Sign up</a>
+                                <i class="fa fa-plus-circle mr-1"></i> add listing</a>
                         </li>
                     </ul>
                     <!-- Search content bar.// -->
@@ -114,7 +114,7 @@
     <!-- CAROUSEL -->
 
     <!-- CAROUSEL -->
-    <div class="slider-container">
+    <div class="slider-container" id="h1">
         <section class="hero fade-in" id="home">
             <div class="container">
                 <h1 class="animate-on-enter">Find Your Dream Property</h1>
@@ -310,34 +310,6 @@
     <!-- --------------------------------------------------------------------------- -->
     <div class="clearfix"></div>
     <!-- END CAROUSEL -->
-<?php
-require_once 'includes/db.php';
-
-$sql = "SELECT DISTINCT location_state, location_city, sqft, location_area 
-        FROM properties";
-
-$stmt = $pdo->prepare($sql);   // 🔥 CHANGE HERE
-$stmt->execute();
-
-$state = [];
-$cities = [];
-$area_form = [];
-$area = [];
-
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-    $states[]     = $row['location_state'];
-    $cities[]    = $row['location_city'];
-    $area_forms[] = $row['sqft'];
-    $areas[]      = $row['location_area'];
-}
-
- $states=array_unique( $states);
-  $cities=array_unique( $cities);
-    $area_forms =array_unique( $area_forms);
-  $areas=array_unique(  $areas);
- 
-?>
     <!-- END CAROSUEL -->
     <div class="clearfix"></div>
 
@@ -371,16 +343,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         <div class="form-group">
                             <select class="wide select_option">
                                 <option data-display="Area From">Area From </option>
-                                 <?php 
-                              
-                                foreach ( $area_forms as  $area_form) {
-                                  
-                                
-                                ?>
-                                <option><?php echo  $area_form;?></option>
-                                
-
-                                <?php } ?>
+                                <option>1500 sqft</option>
+                                <option>1200 sqft</option>
+                                <option>900 sqft</option>
+                                <option>600 sqft</option>
+                                <option>300 sqft</option>
+                                <option>100 sqft</option>
                             </select>
                         </div>
                     </div>
@@ -388,88 +356,41 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         <div class="form-group">
                             <select class="wide select_option">
                                 <option data-display="State">State</option>
-
-                                <?php 
-                              
-                                foreach ($states as $state) {
-                                  
-                                
-                                ?>
-                                <option><?php echo $state;?></option>
-                                
-
-                                <?php } ?>
+                                <!-- <option>United Kingdom</option>
+                                <option>American Samoa</option>
+                                <option>Belgium</option>
+                                <option>Canada</option>
+                                <option>Delaware</option>
+                                <option>Indonesia</option>
+                                <option>Malaysia</option>
+                                <option>Japan</option> -->
                             </select>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 col-md-3">
                         <div class="form-group">
-                            <select class="wide select_option" id="city">
+                            <select class="wide select_option">
                                 <option data-display="City">City</option>
-                                 <?php 
-                              
-                                foreach ( $cities as  $city) {
-                                  
-                                
-                                ?>
-                                <option><?php echo  $city;?></option>
-                                
-
-                                <?php } ?>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
                             </select>
                         </div>
                     </div>
-
-
-                    <script>
-let city = document.getElementById("city");
-
-
-console.log("heloooooooooooooooo");
-
-
-city.addEventListener("change", function () {
-
-    // selected value at runtime
-    let selectedValue = this.value;
-    console.log(selectedValue);
-
-    let data = {
-    areas:<?php 
-    $sql = "SELECT DISTINCT  location_area 
-        FROM properties where location_area " ?> selectedValue <?php" ";
-
-$stmt = $pdo->prepare($sql);   // 🔥 CHANGE HERE
-$stmt->execute();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $areas[]      = $row['location_area'];
-}
-     echo json_encode($areas); ?>;
-};
-    // clear old options
-    area.innerHTML = '<option value="">area</option>';
-
-    // add new options
-    if (data[selectedValue]) {
-        data[selectedValue].forEach(function(c) {
-            let option = document.createElement("option");
-            option.value = c;
-            option.textContent = c;
-            areas.appendChild(option);
-        });
-    }
-});
-</script>
-
-
-
-
-
                     <div class="col-6 col-lg-3 col-md-3">
                         <div class="form-group">
-                            <select class="wide select_option" id="area">
-                                <option data-display="Area">Area</option>
-                                 
+                            <select class="wide select_option">
+                                <option data-display="Area">City</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
 
 
                             </select>
@@ -547,7 +468,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     </div>
 
 
-
     <section class="featured__property bg-light mt-5" id="properties">
         <div class="container">
             <div class="row">
@@ -614,8 +534,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 <i class="fa fa-map-marker"></i> <?php echo $location; ?>
                             </p>
                             <ul class="list-inline card__content">
-                                <?php if($type=='Lands and Plots'){?>
-                                <li class="list-inline-item">
+                            <?php if($type=='Lands and Plots'){?>   
+                            <li class="list-inline-item">
                                     <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
                                 </li>
                                 <li class="list-inline-item">
@@ -624,7 +544,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 <li class="list-inline-item">
                                     <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
                                 </li>
-                                <?php }?>
+                                <?php }?> 
                                 <li class="list-inline-item">
                                     <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
                                 </li>
@@ -797,9 +717,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="featured__property-carousel owl-carousel owl-theme">
+             <div class="featured__property-carousel owl-carousel owl-theme">
 
-                <?php
+    <?php
     require_once 'includes/db.php';
 
     $sql = "SELECT property_id, property_type, property_name, 
@@ -835,60 +755,59 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $kitchens = $row['kitchens'] ?? 0;
             $rooms    = $row['rooms'] ?? 0;
     ?>
-                <div class="item">
-                    <div class="card__image card__box">
-                        <div class="card__image-header h-250">
-                            <div class="ribbon text-uppercase">Available</div>
-                            <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>"
-                                class="img-fluid w100 img-transition">
-                            <div class="info"> for sale</div>
-                        </div>
-                        <div class="card__image-body">
-                            <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
-                            <h6 class="text-capitalize"><?php echo $name; ?></h6>
-                            <p class="text-capitalize">
-                                <i class="fa fa-map-marker"></i> <?php echo $location; ?>
-                            </p>
-                            <ul class="list-inline card__content">
-                                <li class="list-inline-item">
-                                    <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card__image-footer">
-                            <figure>
-                                <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                            </figure>
-                            <ul class="list-inline my-auto">
-                                <li class="list-inline-item pt-2">
-                                    <a href="#">ASSURNEST<br>REALITY</a>
-                                </li>
-                            </ul>
-                            <ul class="list-inline my-auto ml-auto">
-                                <li class="list-inline-item">
-                                    <h6><?php echo $price_display; ?></h6>
-                                </li>
-                            </ul>
-                        </div>
+            <div class="item">
+                <div class="card__image card__box">
+                    <div class="card__image-header h-250">
+                        <div class="ribbon text-uppercase">Available</div>
+                        <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>" class="img-fluid w100 img-transition">
+                        <div class="info"> for sale</div>
+                    </div>
+                    <div class="card__image-body">
+                        <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
+                        <h6 class="text-capitalize"><?php echo $name; ?></h6>
+                        <p class="text-capitalize">
+                            <i class="fa fa-map-marker"></i> <?php echo $location; ?>
+                        </p>
+                        <ul class="list-inline card__content">
+                            <li class="list-inline-item">
+                                <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card__image-footer">
+                        <figure>
+                            <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
+                        </figure>
+                        <ul class="list-inline my-auto">
+                            <li class="list-inline-item pt-2">
+                                <a href="#">ASSURNEST<br>REALITY</a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline my-auto ml-auto">
+                            <li class="list-inline-item">
+                                <h6><?php echo $price_display; ?></h6>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <?php
+            </div>
+    <?php
         }
     } else {
         echo '<div class="item"><div class="text-center py-5">No properties available right now.</div></div>';
     }
     ?>
 
-            </div>
+</div>
 
 
 
@@ -911,9 +830,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="featured__property-carousel owl-carousel owl-theme">
+             <div class="featured__property-carousel owl-carousel owl-theme">
 
-                <?php
+    <?php
     require_once 'includes/db.php';
 
     $sql = "SELECT property_id, property_type, property_name, 
@@ -949,60 +868,59 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $kitchens = $row['kitchens'] ?? 0;
             $rooms    = $row['rooms'] ?? 0;
     ?>
-                <div class="item">
-                    <div class="card__image card__box">
-                        <div class="card__image-header h-250">
-                            <div class="ribbon text-uppercase">Available</div>
-                            <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>"
-                                class="img-fluid w100 img-transition">
-                            <div class="info"> for sale</div>
-                        </div>
-                        <div class="card__image-body">
-                            <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
-                            <h6 class="text-capitalize"><?php echo $name; ?></h6>
-                            <p class="text-capitalize">
-                                <i class="fa fa-map-marker"></i> <?php echo $location; ?>
-                            </p>
-                            <ul class="list-inline card__content">
-                                <li class="list-inline-item">
-                                    <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card__image-footer">
-                            <figure>
-                                <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                            </figure>
-                            <ul class="list-inline my-auto">
-                                <li class="list-inline-item pt-2">
-                                    <a href="#">ASSURNEST<br>REALITY</a>
-                                </li>
-                            </ul>
-                            <ul class="list-inline my-auto ml-auto">
-                                <li class="list-inline-item">
-                                    <h6><?php echo $price_display; ?></h6>
-                                </li>
-                            </ul>
-                        </div>
+            <div class="item">
+                <div class="card__image card__box">
+                    <div class="card__image-header h-250">
+                        <div class="ribbon text-uppercase">Available</div>
+                        <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>" class="img-fluid w100 img-transition">
+                        <div class="info"> for sale</div>
+                    </div>
+                    <div class="card__image-body">
+                        <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
+                        <h6 class="text-capitalize"><?php echo $name; ?></h6>
+                        <p class="text-capitalize">
+                            <i class="fa fa-map-marker"></i> <?php echo $location; ?>
+                        </p>
+                        <ul class="list-inline card__content">
+                            <li class="list-inline-item">
+                                <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card__image-footer">
+                        <figure>
+                            <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
+                        </figure>
+                        <ul class="list-inline my-auto">
+                            <li class="list-inline-item pt-2">
+                                <a href="#">ASSURNEST<br>REALITY</a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline my-auto ml-auto">
+                            <li class="list-inline-item">
+                                <h6><?php echo $price_display; ?></h6>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <?php
+            </div>
+    <?php
         }
     } else {
         echo '<div class="item"><div class="text-center py-5">No properties available right now.</div></div>';
     }
     ?>
 
-            </div>
+</div>
 
         </div>
     </section>
@@ -1020,9 +938,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="featured__property-carousel owl-carousel owl-theme">
+             <div class="featured__property-carousel owl-carousel owl-theme">
 
-                <?php
+    <?php
     require_once 'includes/db.php';
 
     $sql = "SELECT property_id, property_type, property_name, 
@@ -1058,60 +976,59 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $kitchens = $row['kitchens'] ?? 0;
             $rooms    = $row['rooms'] ?? 0;
     ?>
-                <div class="item">
-                    <div class="card__image card__box">
-                        <div class="card__image-header h-250">
-                            <div class="ribbon text-uppercase">Available</div>
-                            <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>"
-                                class="img-fluid w100 img-transition">
-                            <div class="info"> for sale</div>
-                        </div>
-                        <div class="card__image-body">
-                            <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
-                            <h6 class="text-capitalize"><?php echo $name; ?></h6>
-                            <p class="text-capitalize">
-                                <i class="fa fa-map-marker"></i> <?php echo $location; ?>
-                            </p>
-                            <ul class="list-inline card__content">
-                                <li class="list-inline-item">
-                                    <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card__image-footer">
-                            <figure>
-                                <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                            </figure>
-                            <ul class="list-inline my-auto">
-                                <li class="list-inline-item pt-2">
-                                    <a href="#">ASSURNEST<br>REALITY</a>
-                                </li>
-                            </ul>
-                            <ul class="list-inline my-auto ml-auto">
-                                <li class="list-inline-item">
-                                    <h6><?php echo $price_display; ?></h6>
-                                </li>
-                            </ul>
-                        </div>
+            <div class="item">
+                <div class="card__image card__box">
+                    <div class="card__image-header h-250">
+                        <div class="ribbon text-uppercase">Available</div>
+                        <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>" class="img-fluid w100 img-transition">
+                        <div class="info"> for sale</div>
+                    </div>
+                    <div class="card__image-body">
+                        <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
+                        <h6 class="text-capitalize"><?php echo $name; ?></h6>
+                        <p class="text-capitalize">
+                            <i class="fa fa-map-marker"></i> <?php echo $location; ?>
+                        </p>
+                        <ul class="list-inline card__content">
+                            <li class="list-inline-item">
+                                <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card__image-footer">
+                        <figure>
+                            <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
+                        </figure>
+                        <ul class="list-inline my-auto">
+                            <li class="list-inline-item pt-2">
+                                <a href="#">ASSURNEST<br>REALITY</a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline my-auto ml-auto">
+                            <li class="list-inline-item">
+                                <h6><?php echo $price_display; ?></h6>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <?php
+            </div>
+    <?php
         }
     } else {
         echo '<div class="item"><div class="text-center py-5">No properties available right now.</div></div>';
     }
     ?>
 
-            </div>
+</div>
 
 
 
@@ -1120,7 +1037,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 
 
-    <section class="featured__property space-area" id="p5">
+      <section class="featured__property space-area" id="p5">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-lg-6 mx-auto">
@@ -1134,9 +1051,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="featured__property-carousel owl-carousel owl-theme">
+             <div class="featured__property-carousel owl-carousel owl-theme">
 
-                <?php
+    <?php
     require_once 'includes/db.php';
 
     $sql = "SELECT property_id, property_type, property_name, 
@@ -1172,60 +1089,59 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $kitchens = $row['kitchens'] ?? 0;
             $rooms    = $row['rooms'] ?? 0;
     ?>
-                <div class="item">
-                    <div class="card__image card__box">
-                        <div class="card__image-header h-250">
-                            <div class="ribbon text-uppercase">Available</div>
-                            <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>"
-                                class="img-fluid w100 img-transition">
-                            <div class="info"> for sale</div>
-                        </div>
-                        <div class="card__image-body">
-                            <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
-                            <h6 class="text-capitalize"><?php echo $name; ?></h6>
-                            <p class="text-capitalize">
-                                <i class="fa fa-map-marker"></i> <?php echo $location; ?>
-                            </p>
-                            <ul class="list-inline card__content">
-                                <li class="list-inline-item">
-                                    <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card__image-footer">
-                            <figure>
-                                <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                            </figure>
-                            <ul class="list-inline my-auto">
-                                <li class="list-inline-item pt-2">
-                                    <a href="#">ASSURNEST<br>REALITY</a>
-                                </li>
-                            </ul>
-                            <ul class="list-inline my-auto ml-auto">
-                                <li class="list-inline-item">
-                                    <h6><?php echo $price_display; ?></h6>
-                                </li>
-                            </ul>
-                        </div>
+            <div class="item">
+                <div class="card__image card__box">
+                    <div class="card__image-header h-250">
+                        <div class="ribbon text-uppercase">Available</div>
+                        <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>" class="img-fluid w100 img-transition">
+                        <div class="info"> for sale</div>
+                    </div>
+                    <div class="card__image-body">
+                        <span class="badge badge-primary text-capitalize mb-2"><?php echo $type; ?></span>
+                        <h6 class="text-capitalize"><?php echo $name; ?></h6>
+                        <p class="text-capitalize">
+                            <i class="fa fa-map-marker"></i> <?php echo $location; ?>
+                        </p>
+                        <ul class="list-inline card__content">
+                            <li class="list-inline-item">
+                                <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>kitchens <br><i class="fa fa-utensils"></i> <?php echo $kitchens; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card__image-footer">
+                        <figure>
+                            <img src="images/80x80.jpg" alt="" class="img-fluid rounded-circle">
+                        </figure>
+                        <ul class="list-inline my-auto">
+                            <li class="list-inline-item pt-2">
+                                <a href="#">ASSURNEST<br>REALITY</a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline my-auto ml-auto">
+                            <li class="list-inline-item">
+                                <h6><?php echo $price_display; ?></h6>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <?php
+            </div>
+    <?php
         }
     } else {
         echo '<div class="item"><div class="text-center py-5">No properties available right now.</div></div>';
     }
     ?>
 
-            </div>
+</div>
 
 
 
@@ -1282,7 +1198,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
     <!-- TESTIMONIAL -->
     <section id="r1">
-        <div class="container">
+        <div class="container" >
             <div class="row">
                 <div class="col-md-8 col-lg-6 mx-auto">
                     <div class="title__head">
@@ -1451,7 +1367,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 <div class="item">
                     <div class="card__image card__box">
                         <div class="card__image-header h-250">
-
+                           
                             <img src="<?php echo $image_src; ?>" alt="<?php echo $name; ?>"
                                 class="img-fluid w100 img-transition">
                             <div class="INFO1" style="background-color:red;"> Sold Out </div>
@@ -1463,8 +1379,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 <i class="fa fa-map-marker"></i> <?php echo $location; ?>
                             </p>
                             <ul class="list-inline card__content">
-                                <?php if($type=='Lands and Plots'){?>
-                                <li class="list-inline-item">
+                            <?php if($type=='Lands and Plots'){?>   
+                            <li class="list-inline-item">
                                     <span>baths <br><i class="fa fa-bath"></i> <?php echo $baths; ?></span>
                                 </li>
                                 <li class="list-inline-item">
@@ -1473,7 +1389,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 <li class="list-inline-item">
                                     <span>rooms <br><i class="fa fa-inbox"></i> <?php echo $rooms; ?></span>
                                 </li>
-                                <?php }?>
+                                <?php }?> 
                                 <li class="list-inline-item">
                                     <span>area <br><i class="fa fa-map"></i> <?php echo $area_display; ?></span>
                                 </li>
@@ -1516,7 +1432,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
             <!-- </div> -->
     </section>
-
+   
     <!-- END BLOG -->
 
 
@@ -1542,7 +1458,69 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     </section>
     <!-- END CALL TO ACTION -->
 
+     <section class="form">
+        <div class="container">
+            <div class="contactInfo">
+                <div>
+                    <h2>Contact Info</h2>
+                    <ul class="info">
+                        <li>
+                            <span><img src="img/location.png" alt=""></span>
+                            <span>
+                                8 Sutherland Street<br>
+                                Melbourne, Victoria<br>
+                                3000
+                            </span>
+                        </li>
+                        <li>
+                            <span><img src="img/mail.png" alt=""></span>
+                            <span>desmondjeon@gmail.com</span>
+                        </li>
+                        <li>
+                            <span><img src="img/call.png" alt=""></span>
+                            <span>0481-111-111</span>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="socialIcon">
+                    <li><a href="#"><img src="img/1.png" alt=""></a></li>
+                    <li><a href="#"><img src="img/2.png" alt=""></a></li>
+                    <li><a href="#"><img src="img/3.png" alt=""></a></li>
+                    <li><a href="#"><img src="img/4.png" alt=""></a></li>
+                    <li><a href="#"><img src="img/5.png" alt=""></a></li>
+                </ul>
+            </div>
 
+            <div class="contactForm">
+                <h2>Send a Message</h2>
+                <div class="formBox">
+                    <div class="inputBox w50">
+                        <input type="text" name="" id="" required>
+                        <span>First Name</span>
+                    </div>
+                    <div class="inputBox w50">
+                        <input type="text" name="" id="" required>
+                        <span>Last Name</span>
+                    </div>
+                    <div class="inputBox w50">
+                        <input type="email" name="" id="" required>
+                        <span>Email</span>
+                    </div>
+                    <div class="inputBox w50">
+                        <input type="text" name="" id="" required>
+                        <span>Mobile Number</span>
+                    </div>
+                    <div class="inputBox w100">
+                        <textarea name="" id="" required></textarea>
+                        <span>Write Your Message Here.</span>
+                    </div>
+                    <div class="inputBox w100">
+                        <input type="submit" value="Submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer  -->
     <footer>
@@ -1656,15 +1634,19 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 </button>
                             </p>
                             <br>
-                            <h4 class="footer-title"></h4>
+                            <h4 class="footer-title">newsletter</h4>
                             <!-- Form Newsletter -->
                             <div class="widget__form-newsletter ">
                                 <p>
 
-
+                                    Don’t miss to subscribe to our news feeds, kindly fill the form below
                                 </p>
                                 <div class="mt-3">
+                                    <input type="text" class="form-control mb-2" placeholder="Your email address">
 
+                                    <button class="btn btn-primary btn-block text-capitalize" type="button">subscribe
+
+                                    </button>
                                 </div>
                             </div>
 
